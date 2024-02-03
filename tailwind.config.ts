@@ -20,7 +20,14 @@ const config = {
     extend: {
       colors: {
         darkBlack: "#100C27",
+        lightBlack: "#212429",
         darkPurple: "#19C1CE",
+        darkGray: "#7E8A98",
+        gray: "#97A1AC",
+        lightGray: "#CFD3D8",
+        darkWhite: "#F1F3F5",
+        darkYellow: "#F2BF4E",
+        lightYellow: "#F4CA6D",
         lightPurple: "#6C5AE0",
         white: "#FFFFFF",
         border: "hsl(var(--border))",
