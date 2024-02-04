@@ -130,7 +130,7 @@ const LandingpageForm = () => {
         <Detail />
         <Button
           type="submit"
-          className=" bg-darkYellow hover:bg-lightGray w-full h-[48px] text-darkBlack font-sans text-sSm font-bold"
+          className=" bg-darkYellow hover:bg-lightGray w-full h-[48px] text-darkBlack font-sans text-sSm font-bold mb-8"
         >
           GERAR CARTÃO GRÁTIS <Icon icon="mdi:arrow-right-thin" width={36} />
         </Button>
