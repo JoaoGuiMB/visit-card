@@ -5,6 +5,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,6 +14,8 @@ import { z } from "zod";
 import Terms from "./Terms";
 import Detail from "./Detail";
 import { Button } from "@/components/ui/button";
+import { Icon } from "@iconify/react";
+import ReactInputMask from "react-input-mask";
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
@@ -40,11 +43,16 @@ const LandingpageForm = () => {
     console.log(values);
   };
 
+  const handleChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    form.setValue("phone", e.target.value);
+  };
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full mt-5 md:mb-16 md:mt-0 md:w-[60%] md:px-24"
+        className="w-full mt-5 px-4 mb-2 md:mb-16 md:mt-0 md:w-[60%] md:px-24"
       >
         <FormField
           control={form.control}
@@ -55,6 +63,7 @@ const LandingpageForm = () => {
               <FormControl>
                 <Input type="text" placeholder="Digite o seu nome" {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -66,12 +75,15 @@ const LandingpageForm = () => {
               <FormItem className="md:w-[45%]">
                 <FormLabel>Telefone *</FormLabel>
                 <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Digite o seu telefone"
-                    {...field}
-                  />
+                  <ReactInputMask
+                    mask="(99) 99999-9999"
+                    value={form.getValues("phone")}
+                    onChange={handleChangePhone}
+                  >
+                    <Input type="text" placeholder="Digite o seu telefone" />
+                  </ReactInputMask>
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -88,13 +100,16 @@ const LandingpageForm = () => {
                     {...field}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
         </div>
         <Terms />
         <Detail />
-        <Button type="submit">Gerar Cartão Grátis</Button>
+        <Button type="submit">
+          GERAR CARTÃO GRÁTIS <Icon icon="mdi:arrow-right-thin" width={36} />
+        </Button>
       </form>
     </Form>
   );

@@ -149,42 +149,42 @@ const config = {
         "20px",
         {
           lineHeight: "140%",
-          fontWeight: 400,
+          fontWeight: 700,
         },
       ],
       msSm: [
         "16px",
         {
           lineHeight: "140%",
-          fontWeight: 400,
+          fontWeight: 700,
         },
       ],
       sXs: [
         "14px",
         {
           lineHeight: "120%",
-          fontWeight: 400,
+          fontWeight: 700,
         },
       ],
       bodyLg: [
         "20px",
         {
           lineHeight: "150%",
-          fontWeight: 400,
+          fontWeight: 700,
         },
       ],
       bodyMd: [
         "16px",
         {
           lineHeight: "150%",
-          fontWeight: 400,
+          fontWeight: 700,
         },
       ],
       bodySm: [
         "14px",
         {
           lineHeight: "150%",
-          fontWeight: 400,
+          fontWeight: 700,
         },
       ],
     },
