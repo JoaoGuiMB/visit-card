@@ -184,7 +184,7 @@ const config = {
         "14px",
         {
           lineHeight: "150%",
-          fontWeight: 700,
+          fontWeight: 400,
         },
       ],
     },

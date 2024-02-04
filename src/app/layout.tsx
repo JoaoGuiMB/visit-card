@@ -27,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito_sans.variable} ${darker_grotesque.variable}`}>
+      <body
+        className={`${nunito_sans.variable} ${darker_grotesque.variable} h-screen`}
+      >
         <Header />
         {children}
       </body>

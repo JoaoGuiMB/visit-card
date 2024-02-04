@@ -16,6 +16,7 @@ import Detail from "./Detail";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@iconify/react";
 import ReactInputMask from "react-input-mask";
+import { useRouter } from "next/navigation";
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
@@ -26,7 +27,7 @@ const formSchema = z.object({
     .string()
     .min(2, { message: "O nome precisa ter no mínimo 2 caracteres" }),
   email: z.string().email("Esse não é um email válido"),
-  phone: z.string().regex(phoneRegex, "Invalid Number!"),
+  phone: z.string().regex(phoneRegex, "Telefone inválido"),
 });
 
 const LandingpageForm = () => {
@@ -38,21 +39,42 @@ const LandingpageForm = () => {
       phone: "",
     },
   });
+  const router = useRouter();
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
+    router.push(
+      `/result?name=${values.name}&email=${values.email}&phone=${values.phone}`
+    );
   };
 
   const handleChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     form.setValue("phone", e.target.value);
+  };
+
+  const adjustValue = (v: string) => {
+    const digitos = !v ? "" : v.replace(/[^\d]/g, "");
+    if (!digitos || digitos.length < 10) return v;
+    const corte = digitos.length === 10 ? 6 : 7;
+    const max = digitos.length > 11 ? 11 : digitos.length;
+    return `(${digitos.substring(0, 2)}) ${digitos.substring(
+      2,
+      corte
+    )}-${digitos.substring(corte, max)}`;
+  };
+
+  const maskBuilder = () => {
+    const v = form.getValues("phone");
+    if (!v || v.length == 0) return "";
+    const a = adjustValue(v);
+    return a.length >= 6 && a[5] === "9" ? "(99) 99999-9999" : "(99) 9999-9999";
   };
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full mt-5 px-4 mb-2 md:mb-16 md:mt-0 md:w-[60%] md:px-24"
+        className="w-full mt-5 px-4 mb-2 md:mb-16 md:mt-0 md:w-[50%] md:px-24"
       >
         <FormField
           control={form.control}
@@ -76,7 +98,7 @@ const LandingpageForm = () => {
                 <FormLabel>Telefone *</FormLabel>
                 <FormControl>
                   <ReactInputMask
-                    mask="(99) 99999-9999"
+                    mask={maskBuilder()}
                     value={form.getValues("phone")}
                     onChange={handleChangePhone}
                   >
@@ -109,7 +131,7 @@ const LandingpageForm = () => {
         <Detail />
         <Button
           type="submit"
-          className=" bg-darkYellow hover:bg-lightYellow w-full h-[48px] text-darkBlack font-sans text-sSm font-bold"
+          className=" bg-darkYellow hover:bg-lightGray w-full h-[48px] text-darkBlack font-sans text-sSm font-bold"
         >
           GERAR CARTÃO GRÁTIS <Icon icon="mdi:arrow-right-thin" width={36} />
         </Button>
