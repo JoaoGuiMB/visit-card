@@ -20,7 +20,7 @@ const ResultPage = () => {
   const isMobile = useMedia("(max-width: 1500px)");
 
   return (
-    <main className="w-full pt-2 sm:pt-36 lg:h-[calc(100vh-128px)] md:px-52 bg-lightPurple flex-column justify-center items-center">
+    <main className="w-full pt-36 h-[calc(100vh-128px)] md:px-52 bg-lightPurple flex-column justify-center items-center">
       <section className="flex flex-col justify-center items-center md:flex-row md:justify-between md:mx-24">
         {!isMobile && (
           <div className="sm:w-[20%]">
