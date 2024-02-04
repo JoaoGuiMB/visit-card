@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Terms = () => {
   return (
     <ul className="text-white font-sans list-disc p-6 text-bodyMd">
@@ -6,7 +8,15 @@ const Terms = () => {
         com meus interesses.
       </li>
       <li>
-        Ao informar meus dados, eu concordo com a Política de privacidade.
+        Ao informar meus dados, eu concordo com a{" "}
+        <Link
+          href="https://legal.rdstation.com/pt/privacy-policy/"
+          target="_blank"
+          className="underline"
+        >
+          Política de privacidade
+        </Link>
+        .
       </li>
     </ul>
   );

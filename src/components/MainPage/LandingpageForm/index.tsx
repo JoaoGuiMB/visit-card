@@ -42,7 +42,6 @@ const LandingpageForm = () => {
   const router = useRouter();
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
     router.push(
       `/result?name=${values.name}&email=${values.email}&phone=${values.phone}`
     );

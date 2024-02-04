@@ -4,7 +4,9 @@ interface CardItemProps {
 
 const CardItem = ({ children }: CardItemProps) => {
   return (
-    <p className=" font-sans text-darkBlack text-bodySm mb-5">{children}</p>
+    <p className="font-sans text-darkBlack text-bodySm md:text-bodyLg mb-5">
+      {children}
+    </p>
   );
 };
 

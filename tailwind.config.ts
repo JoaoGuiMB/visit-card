@@ -170,14 +170,14 @@ const config = {
         "20px",
         {
           lineHeight: "150%",
-          fontWeight: 700,
+          fontWeight: 400,
         },
       ],
       bodyMd: [
         "16px",
         {
           lineHeight: "150%",
-          fontWeight: 700,
+          fontWeight: 400,
         },
       ],
       bodySm: [

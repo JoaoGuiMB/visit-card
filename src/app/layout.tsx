@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito_Sans, Darker_Grotesque } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Layout/Header";
+import Footer from "@/components/Layout/Footer";
 
 const nunito_sans = Nunito_Sans({
   subsets: ["latin"],
@@ -27,11 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${nunito_sans.variable} ${darker_grotesque.variable} h-screen`}
-      >
+      <body className={`${nunito_sans.variable} ${darker_grotesque.variable}`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
